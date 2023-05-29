@@ -1,0 +1,39 @@
+
+
+<h2> My Heroes </h2>
+<div>
+    <label for="new-hero">Hero name: </label>
+    <input pInputText [style]="{'width': '250px'}" id="new-hero" #heroName/>
+
+    <p-button type="button"  (click)="add(heroName.value); heroName.value=''">
+        Add hero
+    </p-button>
+</div>
+
+
+<ul >
+    <p-table [value]="heroes" class="selected" 
+    styleClass="p-datatable-gridlines" selectionMode="single"  [(selection)]="selectedhero" dataKey="id" [tableStyle]="{'max-width': '30px'}"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 5%;">ID</th>
+                <th style="width: 10%;">NAME</th>
+            </tr>
+
+        </ng-template>
+        <ng-template pTemplate="body" let-hero >
+            <tr [pSelectableRow]="hero.id" routerLink='/details/{{hero.id}}' >
+                <td><p-tag title="{{hero.name}} details" class="heroes badge" routerLink="/details/{{hero.id}}">{{hero.id}} </p-tag></td>
+                <td><p-tag title="{{hero.name}} details" class="name" routerLink="/details/{{hero.id}}">{{hero.name}}</p-tag></td> 
+                <p-button title="delete hero" (click)="delete(hero)">x</p-button>
+            </tr>
+        </ng-template>
+        
+        
+        
+    </p-table>
+</ul>
+
+
+

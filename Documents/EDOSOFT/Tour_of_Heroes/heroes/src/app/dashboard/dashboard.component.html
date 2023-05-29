@@ -1,0 +1,13 @@
+
+
+<app-hero-search></app-hero-search>
+<h2>{{ title1 }}</h2>
+<div class="heroes-menu">
+    <p-button styleClass="p-button-rounded" *ngFor="let hero of heroes" routerLink="/details/{{hero.id}}">
+        {{hero.name}}
+    </p-button>
+
+</div>
+
+
+
